@@ -1,0 +1,56 @@
+$primaryTextColor: rgb(255, 255, 255);
+$font-sizes: (
+    "small": 20.25px,
+    "medium": 27px,
+    "large": 22.5px,
+    "xlarge": 108px
+);
+body {
+    background: #9D0900;
+    color: $primaryTextColor;
+}
+
+.banner {
+    background: #781C1A;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+max-width: 768px;
+margin-top: 82px;
+padding: 10px;
+a {
+    color: $primaryTextColor;
+    text-decoration: none;
+}
+img {
+    width: 100px;
+    height: 102px;
+}
+.alert, .city {
+    font-size: map-get($font-sizes, large)
+}
+.condition {
+    font-size: map-get($font-sizes, medium )
+}
+.temp {
+    font-size: map-get($font-sizes, xlarge)
+}
+.time {
+    font-size: map-get($font-sizes, small);
+    opacity: 65%;
+
+}
+}
+
+
+.forecast {
+    border: 2px solid #781C1A;
+    border-radius: 6px;
+    margin-top: 20px;
+    button {
+        border-radius: 20px;
+    }
+    ul {
+        list-style: none;
+
+    }
+}

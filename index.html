@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="src/main.css">
+    <title>Solo Weather</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="row">
+                <div class="col-7">
+                    <class="city">
+                        <strong>
+                            Winnipeg, Manitoba Weather
+                        </strong>
+                        </h2class>
+                        <h2 class="time">
+                            As of 15:33 CDT
+                        </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <h1 class=temp>
+                        31°
+                    </h1>
+                    <h3 class="condition">
+                        Sunny
+                    </h3>
+                </div>
+                <div class="col-4">
+                    <img src="images/sun.png" alt="">
+                    <div class="high-low text-center">
+                        --/<strong>20</strong>°
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="alert">
+                    <a href="https://weather.com/en-CA/weather/alerts/localalerts/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18?phenomena=extremeHeat&significance=W&areaid=052100&office=CWTO&etn=0000"
+                        target="_blank">
+                        ‼ Heat Warning ></a>
+                </h2>
+            </div>
+        </div>
+        <div class="forecast">
+            <h4 class="forecast__title">
+                Today's Forecast for Winnipeg, Manitoba
+            </h4>
+            <div class="row">
+                <div class="forecast-item col-3 text-center">Morning<br>24°<br /><img width="50"
+                        src="images/sun-clouds.png" /><br />--</div>
+                <div class="forecast-item col-3 text-center">Afternoon<br>24°<br /><img width="50"
+                        src="images/sun-clouds.png" /><br />--</div>
+                <div class="forecast-item col-3 text-center">Evening<br>24°<br /><img width="50"
+                        src="images/sun-clouds.png" /><br />--</div>
+                <div class="forecast-item col-3 text-center">Overnight<br>24°<br /><img width="50"
+                        src="images/sun-clouds.png" /><br />--</div>
+            </div>
+            <button class="btn btn-primary"><a htef="#!">Next hours</a></button>
+        </div>
+    </div>
+</body>
+
+</html>
