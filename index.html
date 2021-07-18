@@ -9,19 +9,31 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
+
     <link rel="stylesheet" href="src/main.css">
     <title>Solo Weather</title>
 </head>
 
 <body>
     <div class="container">
+
+
+        <div class="input-group mt-5">
+            <input type="text" class="form-control" placeholder="Enter a city..."
+                aria-label="Enter a city..." aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button"
+                id="button-addon2">Search</button>
+        </div>
+
         <div class="banner">
             <div class="row">
-                <div class="col-7">
+                <div class="col-4">
                     <class="city">
                         <strong>
                             Winnipeg, Manitoba Weather
@@ -30,64 +42,83 @@
                         <h2 class="time">
                             As of 15:33 CDT
                         </h2>
+                        <h1 class=temp id="temp">
+                            31°
+                        </h1>
+                        <h3 class="condition">
+                            Sunny
+                        </h3>
+                        <h2 class="alert">
+                            <a
+                                href="https://weather.com/en-CA/weather/alerts/localalerts/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18?phenomena=extremeHeat&significance=W&areaid=052100&office=CWTO&etn=0000">
+                                ‼ Heat Warning ></a>
+                        </h2>
+
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-8">
-                    <h1 class=temp>
-                        31°
-                    </h1>
-                    <h3 class="condition">
-                        Sunny
-                    </h3>
-                </div>
-                <div class="col-4">
+                <div class="col-3">
                     <img src="images/sun.png" alt="">
                     <div class="high-low">
                         --/<strong>20</strong>°
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <h2 class="alert">
-                    <a
-                        href="https://weather.com/en-CA/weather/alerts/localalerts/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18?phenomena=extremeHeat&significance=W&areaid=052100&office=CWTO&etn=0000">
-                        ‼ Heat Warning ></a>
-                </h2>
-            </div>
-        </div>
+                <div class="col-3">
 
-        <br />
-        <div id='map' style='width: 765px; height: 400px; border-radius: 6px;'></div>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiYWNhcmxzb24yMDQiLCJhIjoiY2tyOGlzdWF0MHB5MTMybmkyOWVqaHh0dSJ9.C_isjd1CDCSbdbz7trW_MQ';
-            var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-97.138, 49.895], // starting position [lng, lat]
-                zoom: 9 // starting zoom
-            });
-        </script>
-        <br />
-        <div class="forecast">
-            <h4 class="forecast__title">
-                Today's Forecast for Winnipeg, Manitoba
-            </h4>
-            <div class="row">
-                <div class="forecast-item col-3 text-center">Morning<br>24°<br /><img width="50"
-                        src="images/sun-clouds.png" /><br />--</div>
-                <div class="forecast-item col-3 text-center">Afternoon<br>24°<br /><img width="50"
-                        src="images/sun-clouds.png" /><br />--</div>
-                <div class="forecast-item col-3 text-center">Evening<br>24°<br /><img width="50"
-                        src="images/sun-clouds.png" /><br />--</div>
-                <div class="forecast-item col-3 text-center">Overnight<br>24°<br /><img width="50"
-                        src="images/sun-clouds.png" /><br />--</div>
+                    <div id='map'
+                        style='width: 400px; max-width: 50vw; height: 400px; border-radius: 6px;'>
+                    </div>
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiYWNhcmxzb24yMDQiLCJhIjoiY2tyOGlzdWF0MHB5MTMybmkyOWVqaHh0dSJ9.C_isjd1CDCSbdbz7trW_MQ';
+                        var map = new mapboxgl.Map({
+                            container: 'map', // container ID
+                            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                            center: [-97.138, 49.895], // starting position [lng, lat]
+                            zoom: 9 // starting zoom
+                        });
+                    </script>
+
+                </div>
             </div>
-            <button class="btn btn-primary"><a
-                    href="https://weather.com/en-CA/weather/hourbyhour/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18">Next
-                    hours</a></button>
-        </div>
-    </div>
+            <hr />
+            <br />
+            <div class="forecast">
+                <h4 class="forecast__title">
+                    Today's Forecast for Winnipeg, Manitoba
+                </h4>
+                <div class="row">
+                    <div class="forecast-item col-3 text-center">Morning<br>24°<br /><img width="50"
+                            src="images/sun-clouds.png" /><br />--</div>
+                    <div class="forecast-item col-3 text-center">Afternoon<br>24°<br /><img
+                            width="50" src="images/sun-clouds.png" /><br />--</div>
+                    <div class="forecast-item col-3 text-center">Evening<br>24°<br /><img width="50"
+                            src="images/sun-clouds.png" /><br />--</div>
+                    <div class="forecast-item col-3 text-center">Overnight<br>24°<br /><img
+                            width="50" src="images/sun-clouds.png" /><br />--</div>
+                </div>
+                <button class="btn btn-primary"><a
+                        href="https://weather.com/en-CA/weather/hourbyhour/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18">Next
+                        hours</a></button>
+                <hr />
+                <div class="forecast-2">
+                    <h4 class="forecast-2__title">
+                        Upcoming Forecast for Winnipeg, Manitoba
+                    </h4>
+                    <div class="row">
+                        <div class="forecast-2-item col-3 text-center">Monday<br>24°<br /><img
+                                width="50" src="images/sun-clouds.png" /><br />--</div>
+                        <div class="forecast-2-item col-3 text-center">Tuesday<br>24°<br /><img
+                                width="50" src="images/sun-clouds.png" /><br />--</div>
+                        <div class="forecast-2-item col-3 text-center">Wednesday<br>24°<br /><img
+                                width="50" src="images/sun-clouds.png" /><br />--</div>
+                        <div class="forecast-2-item col-3 text-center">Thursday<br>24°<br /><img
+                                width="50" src="images/sun-clouds.png" /><br />--</div>
+                    </div>
+                    <button class="btn btn-primary"><a
+                            href="https://weather.com/en-CA/weather/hourbyhour/l/289e17e56d20499f26a890027a514d4cef80dcf94f3dc68ef8cbc76ecc93aa18">Next
+                            days</a></button>
+
+
+                </div>
+            </div>
 </body>
 
 </html>
